@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="row" >
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+        <div class="panel panel-primary"  id="signup-top">
+          <div class="panel-heading">Sign Up for Gif Library</div>
+          <div class="panel-body">
+            <form [formGroup]="signUpForm" (ngSubmit)="signUp()" class="form">
+               <div class="form-group">
+                <label for="userName">Username :</label>
+                <input type="userName" class="form-control" formControlName="userName">
+                <span id="userNameError" class="error-message" *ngIf="signUpForm.get('userName').touched && signUpForm.controls.userName.errors">Please Provide correct Email ID</span>
+              </div>
+              <div class="form-group">
+                <label for="emailId">E-Mail :</label>
+                <input type="email" class="form-control" formControlName="emailId">
+                <span id="emailIdError" class="error-message" *ngIf="signUpForm.get('emailId').touched && signUpForm.controls.emailId.errors">Please Provide correct Email ID</span>
+              </div>
+              <div class="form-group">
+                <label for="password">Password :</label>
+                <input type="text" class="form-control" formControlName="password">
+                <span id="passwordError" class="error-message" *ngIf="signUpForm.get('password').touched && signUpForm.controls.password.errors">Please enter correct password</span>
+              </div>
+              <div class="form-group">
+                  <label for="cpassword">Confirm Password :</label>
+                  <input type="text" class="form-control" formControlName="cpassword">
+                  <span id="cpasswordError" class="error-message" *ngIf="signUpForm.get('cpassword').touched && signUpForm.controls.cpassword.errors">Please enter the same password</span>
+                </div>
+              <div class="text-center">
+                
+                <button class="btn btn-primary " type="submit" [disabled]="!signUpForm.valid">&nbsp; Submit &nbsp;</button>
+                &nbsp;&nbsp;&nbsp;
+                <button class="btn btn-primary " [routerLink]='["/login"]'>&nbsp; Login &nbsp;&nbsp;</button>
+                
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

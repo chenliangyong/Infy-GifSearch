@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+      <div class="panel panel-primary" id="login-top" >
+        <div class="panel-heading">Welcome to Gif Library</div>
+        <div class="panel-body">
+          <form [formGroup]="loginForm" (ngSubmit)="login()" class="form">
+            <div class="form-group">
+              <label for="emailId">Username :</label>
+              <input type="email" class="form-control" formControlName="emailId">
+              <span id="emailIdError" class="error-message" *ngIf="loginForm.get('emailId').touched && loginForm.controls.emailId.errors">Please Provide correct Email ID</span>
+            </div>
+            <div class="form-group">
+              <label for="password">Password :</label>
+              <input type="text" class="form-control" formControlName="password">
+              <span id="passwordError" class="error-message" *ngIf="loginForm.get('password').touched && loginForm.controls.password.errors">Please enter correct password</span>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">&nbsp; Login &nbsp;</button>
+              &nbsp;&nbsp;&nbsp;
+              <button class="btn btn-primary" [routerLink]='["/signup"]'>Sign Up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

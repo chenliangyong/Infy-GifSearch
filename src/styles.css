@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-image: url("assets/bg.jpg");
+    background-size: 100%;
+}
+.error-message{
+    color: red;
+    font-size: small;
+}
+ 
+#login-top{
+    margin-top:80px;
+}
+
+#signup-top{
+    margin-top:40px;
+}
+
+#navbar-top{
+    margin-top:50px;
+}
+
+.divider-vertical {
+	height: 50px;
+	margin: 0px 9px; 
+	border-left: 1px solid rgb(56, 56, 56);
+	border-right: 1px solid rgb(56, 56, 56);
+}
