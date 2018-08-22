@@ -5,7 +5,8 @@ body {
 }
 .error-message{
     color: red;
-    font-size: small;
+    font-size: large;
+    font-weight: bold;
 }
  
 #login-top{

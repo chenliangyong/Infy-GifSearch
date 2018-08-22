@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '../../../node_modules/@angular/router';
-
+import { Router } from '@angular/router';
+import { PasswordValidator } from './password.validator';
+import { LoginService } from './login.service';
+import { User } from './User';
 
 @Component({
   selector: 'login',
@@ -11,19 +13,26 @@ import { Router } from '../../../node_modules/@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  loginUser: User;
+  errorMessage: String = null;
+
+  constructor(private formBuilder: FormBuilder, private router: Router, private service : LoginService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       emailId: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required,PasswordValidator.checkPW]]
     });
   }
 
   login(){
-    this.router.navigateByUrl('search');
+    this.errorMessage = null;
+    this.service.login(this.loginForm.value)
+      .then(details => this.loginUser = details)
+      .catch(error => this.errorMessage = error);
+
+    if (this.errorMessage==null){  
+      // this.router.navigateByUrl('search');
+    }
   };
-
-
-  
 }
